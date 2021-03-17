@@ -1,0 +1,26 @@
+
+# My Custom Ignores 
+.vscode/
+Logs/
+SQL/
+keys.py
+keys2.py
+pythonMongo_venv/
+
+
+##### OSX
+# General
+.DS_Store
+.AppleDouble
+.LSOverride
+# Thumbnails
+._*
+
+# Environments
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/

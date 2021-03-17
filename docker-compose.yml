@@ -1,0 +1,22 @@
+version: '3.3'
+services:
+    mongo:
+      env_file: .env
+      container_name: 'mongodatabase'
+      image: 'mongo'
+      environment: 
+      # provide your credentials here
+        - MONGO_INITDB_ROOT_USERNAME=${DB_ROOT_USER}  #This comes from the .env file
+        - MONGO_INITDB_ROOT_PASSWORD=${DB_ROOT_PWD}   #This comes from the .env file
+      ports:
+        #- '192.168.1.68:27017:27017'
+        - '27017-27019:27017-27019'
+      restart: 'unless-stopped'
+      volumes:
+        #Create sandbox database, sandbox user, test data collection & seed it with 500 documents.
+        #This will only run when a new data volume is created.
+        - ./mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js:ro 
+        - mongodata:/data/db
+
+volumes: 
+  mongodata:
